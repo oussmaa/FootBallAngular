@@ -1,8 +1,8 @@
 export interface Calendar {
-
-    title : String;
-	color : String;
-	start : Date ;
-	end : Date ;
+	idEvenement: String;
+    titre : String;
+	description : String;
+	debut : Date ;
+	fin : Date ;
 
   }

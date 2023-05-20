@@ -1,0 +1,288 @@
+<app-sid-bar></app-sid-bar>
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout User</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add User" (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label >Username</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Username"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['Username'].dirty || registerForm.controls['Username'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Username'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+        <ng-template #TemplateUsernameInvalid>
+  
+          Username is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >nomUtil    :</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nomUtil" nzWidth="25%" id="lastName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nomUtil'].dirty || registerForm.controls['nomUtil'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nomUtil'].errors?.['required'] ; then TemplateLastnameRequired;"></ng-container>
+        <ng-template #TemplateLastnameRequired>
+  
+          nomUtil is required
+        </ng-template>
+  
+  
+      </div>
+  
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Password</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Password" nzWidth="25%" id="Password" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(223, 16, 16)"  *ngIf="(registerForm.controls['Password'].dirty || registerForm.controls['Password'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Password'].errors?.['required'] ; then TemplatePasswordRequired; "></ng-container>
+        <ng-template #TemplatePasswordRequired>
+  
+          Password is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >prenomUtil</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="prenomUtil"nzWidth="25%" id="username" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['prenomUtil'].dirty || registerForm.controls['prenomUtil'].touched) " >
+        <ng-container *ngIf="registerForm.controls['prenomUtil'].errors?.['required'] ; then TemplateUsernameRequired;"></ng-container>
+        <ng-template #TemplateUsernameRequired>
+  
+          prenomUtil is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >E-mail   </nz-form-label>
+ <nz-form-control [nzSm]="14" [nzXs]="24"  >
+<input nz-input formControlName="emailUtil"  nzWidth="25%" id="email" />
+  </nz-form-control> 
+  <div style="display: block; font-size: 15px; color:rgb(235, 21, 21)"  *ngIf="(registerForm.controls['emailUtil'].dirty || registerForm.controls['emailUtil'].touched) " >
+    <ng-container *ngIf="registerForm.controls['emailUtil'].errors?.['required'] ; then TemplateEmailRequired;"></ng-container>
+    <ng-template #TemplateEmailRequired>
+
+      Email is required   
+    </ng-template>
+ 
+
+  </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >numTelUtil   </nz-form-label>
+ <nz-form-control [nzSm]="14" [nzXs]="24"  >
+<input nz-input formControlName="numTelUtil" nzWidth="25%" id="email" />
+  </nz-form-control> 
+  <div style="display: block; font-size: 15px; color:rgb(235, 21, 21)"  *ngIf="(registerForm.controls['numTelUtil'].dirty || registerForm.controls['numTelUtil'].touched) " >
+    <ng-container *ngIf="registerForm.controls['numTelUtil'].errors?.['required'] ; then TemplatenumTelUtilRequired;"></ng-container>
+    <ng-template #TemplatenumTelUtilRequired>
+
+      Email is required   
+    </ng-template>
+ 
+
+  </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>roles</nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear  nzWidth="25%" formControlName="roles">
+  <nz-option nzLabel="Admin" nzValue="Admin"></nz-option>
+  
+  <nz-option nzLabel="Coach" nzValue="Coach"></nz-option>
+  <nz-option nzLabel="User" nzValue="User"></nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['roles'].dirty || registerForm.controls['roles'].touched) " >
+<ng-container *ngIf="registerForm.controls['roles'].errors?.['required'] ; then TemplatePostRequired; "></ng-container>
+<ng-template #TemplatePostRequired>
+
+  roles  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Add User" (nzOnCancel)="handleCancelupdate()"  >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()">
+    <nz-form-item>
+      <nz-form-label >Username</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Username"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['Username'].dirty || registerForm.controls['Username'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Username'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+        <ng-template #TemplateUsernameInvalid>
+  
+          Username is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >nomUtil    :</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nomUtil" nzWidth="25%" id="lastName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nomUtil'].dirty || registerForm.controls['nomUtil'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nomUtil'].errors?.['required'] ; then TemplateLastnameRequired;"></ng-container>
+        <ng-template #TemplateLastnameRequired>
+  
+          nomUtil is required
+        </ng-template>
+  
+  
+      </div>
+  
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Password</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Password" nzWidth="25%" id="Password" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(223, 16, 16)"  *ngIf="(registerForm.controls['Password'].dirty || registerForm.controls['Password'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Password'].errors?.['required'] ; then TemplatePasswordRequired; "></ng-container>
+        <ng-template #TemplatePasswordRequired>
+  
+          Password is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >prenomUtil</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="prenomUtil"nzWidth="25%" id="username" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['prenomUtil'].dirty || registerForm.controls['prenomUtil'].touched) " >
+        <ng-container *ngIf="registerForm.controls['prenomUtil'].errors?.['required'] ; then TemplateUsernameRequired;"></ng-container>
+        <ng-template #TemplateUsernameRequired>
+  
+          prenomUtil is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >E-mail   </nz-form-label>
+ <nz-form-control [nzSm]="14" [nzXs]="24"  >
+<input nz-input formControlName="emailUtil"  nzWidth="25%" id="email" />
+  </nz-form-control> 
+  <div style="display: block; font-size: 15px; color:rgb(235, 21, 21)"  *ngIf="(registerForm.controls['emailUtil'].dirty || registerForm.controls['emailUtil'].touched) " >
+    <ng-container *ngIf="registerForm.controls['emailUtil'].errors?.['required'] ; then TemplateEmailRequired;"></ng-container>
+    <ng-template #TemplateEmailRequired>
+
+      Email is required   
+    </ng-template>
+ 
+
+  </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >numTelUtil   </nz-form-label>
+ <nz-form-control [nzSm]="14" [nzXs]="24"  >
+<input nz-input formControlName="numTelUtil" nzWidth="25%" id="email" />
+  </nz-form-control> 
+  <div style="display: block; font-size: 15px; color:rgb(235, 21, 21)"  *ngIf="(registerForm.controls['numTelUtil'].dirty || registerForm.controls['numTelUtil'].touched) " >
+    <ng-container *ngIf="registerForm.controls['numTelUtil'].errors?.['required'] ; then TemplatenumTelUtilRequired;"></ng-container>
+    <ng-template #TemplatenumTelUtilRequired>
+
+      Email is required   
+    </ng-template>
+ 
+
+  </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>roles</nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear  nzWidth="25%" formControlName="roles">
+  <nz-option nzLabel="Admin" nzValue="Admin"></nz-option>
+  
+  <nz-option nzLabel="Coach" nzValue="Coach"></nz-option>
+  <nz-option nzLabel="User" nzValue="User"></nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['roles'].dirty || registerForm.controls['roles'].touched) " >
+<ng-container *ngIf="registerForm.controls['roles'].errors?.['required'] ; then TemplatePostRequired; "></ng-container>
+<ng-template #TemplatePostRequired>
+
+  roles  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Update User</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<div class="Marge">
+<nz-table #editRowTable nzBordered [nzData]="users" nzTableLayout="fixed">
+    <thead>
+      <tr>
+ 
+        <th nzWidth="10%">idUtil</th>
+        <th nzWidth="10%">Username</th>
+        <th nzWidth="10%">nomUtil</th>
+        <th nzWidth="10%">prenomUtil</th>
+        <th nzWidth="10%">numTelUtil</th>
+        <th nzWidth="25%">emailUtil</th>
+        <th nzWidth="10%">roles</th>
+         <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of users">
+        <ng-container >
+          <td>{{ data.idUtil }}</td>
+          <td>{{ data.username }}</td>
+          <td>{{ data.nomUtil }}</td>
+          <td>{{ data.prenomUtil }}</td>
+          <td>{{ data.numTelUtil }}</td>
+          <td>{{ data.emailUtil }}</td>
+          <td>{{ data.roles[0].role }}</td>
+ 
+           <td ><a  (click)="showModalupdate(data)" >Edit</a> <br> <a (click)="showConfirm(data.idUtil)">Delete</a> </td>
+        </ng-container>
+
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

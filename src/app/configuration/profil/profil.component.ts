@@ -43,8 +43,7 @@ export class ProfilComponent implements OnInit {
       name: new FormControl(),
       lastname: new FormControl(),
       email:new FormControl(),
-      Equipe:new FormControl(),
-      Post:new FormControl(),
+       numTelUtil:new FormControl(),
  
 
   });
@@ -54,13 +53,12 @@ export class ProfilComponent implements OnInit {
 
   this.registerForm = this.formBuilder.group({
 
-    name: [this.user.firstName, [Validators.required,Validators.pattern(this.nameAndLastnamePattern) ]],
-    lastname: [this.user.lastName, [Validators.required,Validators.pattern(this.nameAndLastnamePattern)] ],
-    email:[this.user.email, [Validators.required,Validators.pattern(this.emailPattern)] ],
+    name: [this.user.nomUtil, [Validators.required,Validators.pattern(this.nameAndLastnamePattern) ]],
+    lastname: [this.user.prenomUtil, [Validators.required,Validators.pattern(this.nameAndLastnamePattern)] ],
+    email:[this.user.emailUtil, [Validators.required,Validators.pattern(this.emailPattern)] ],
  
-    Post:[this.user.poste, [Validators.required,Validators.pattern(this.nameAndLastnamePattern)] ],
-    Equipe:[this.user.equipe, [Validators.required,Validators.pattern(this.nameAndLastnamePattern)] ],
-
+    numTelUtil:[this.user.numTelUtil, [Validators.required,Validators.pattern(this.nameAndLastnamePattern)] ],
+ 
 
  });
   }
@@ -94,78 +92,44 @@ export class ProfilComponent implements OnInit {
     }
   }
  
-  submitForm(): void {
-    if (this.registerForm.invalid){
-      this.registerForm.markAllAsTouched();
-    }else{
-      let Equipe=this.registerForm.controls['Equipe'].value;
+  submitForm(){
+ 
       let name= this.registerForm.controls['name'].value;
+      let email= this.registerForm.controls['email'].value;
       let lastname= this.registerForm.controls['lastname'].value;
-      let Post=this.registerForm.controls['Post'].value;
-      let email=this.registerForm.controls['email'].value;
 
+      let numTelUtil=this.registerForm.controls['numTelUtil'].value;
+ alert(name+email+lastname+numTelUtil)
+ 
       this.data={
-        "username":"username",
-        "firstName":name,
-        "lastName":lastname,
-        "poste":Post,
-        "equipe":Equipe,
-        "email":email,
-         "role":"User",
-         "password":"ff",
-         "imageUrl":""
-        }
-       
+        "image": this.imageSrc,
+        "nomUtil": name,
+        "prenomUtil": lastname,
+        "numTelUtil": numTelUtil,
+        "emailUtil": email,
     
-        this.api.updateUser(this.data,this.user.id).subscribe(
+      }
+    
+        this.api.updateUser(this.data,this.user.idUtil).subscribe(
           data=> 
-        {  localStorage.setItem('user',JSON.stringify(data))
-   alert('Update successful')
-    }   
+        { 
+           localStorage.setItem('user',JSON.stringify(data))
+            alert('Update successful')
+         }   
   )}
-}
+
     ngOnInit(): void {
-      this.get5LastNotifications()
-      this.getImage();
+    this.imageSrc=this.user.image;
  
   }
-  public openNotification(state: boolean) {
-    
-    this.showNotification=state;
-    if(state==true)
-    {
-      this.showNumerNotif=false;
-    }
-    else{
-      this.showNumerNotif=true;
-
-    }
-  }
-  getImage()
-  { 
-    this.user = JSON.parse(localStorage.getItem('user') || '{}'); 
-  this.imageSrc="http://localhost:8065/api/downloadFile/"+this.user.id;
-  this.Name=this.user.username;
-  this.Poste=this.user.poste;
-
-  }  
-  updateUser(){
-
-
  
-    //window.location.reload();
-}
-  get5LastNotifications() {
-    this.api.getNotif().subscribe(res => {
-      this.notifications = res;
-      this.nbNotif=this.notifications.length;
-    });
-  }
+  
+  
+ 
   Logout()
   { 
     localStorage.removeItem('user');
     localStorage.clear();
-    
     this.router.navigateByUrl('/login')
    
   }

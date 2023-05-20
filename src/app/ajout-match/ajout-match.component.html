@@ -1,0 +1,254 @@
+<app-sid-bar></app-sid-bar>
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout Match</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle=" Ajout Match"    (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()" >
+ 
+    <nz-form-item>
+      <nz-form-label>Coach</nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="Coach">
+  
+  <nz-option *ngFor="let option of Coeach" nzLabel={{option.username}} nzValue={{option.idUtil}} >  </nz-option>
+
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['Coach'].dirty || registerForm.controls['Coach'].touched) " >
+<ng-container *ngIf="registerForm.controls['type'].errors?.['required'] ; then TemplateCoachRequired; "></ng-container>
+<ng-template #TemplateCoachRequired>
+
+  Coach  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Type</nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="type">
+  <nz-option nzLabel="1" nzValue="1"></nz-option>
+  
+  <nz-option nzLabel="2" nzValue="2"></nz-option>
+  <nz-option nzLabel="3" nzValue="3"></nz-option>
+  <nz-option nzLabel="4" nzValue="4"></nz-option>
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['type'].dirty || registerForm.controls['type'].touched) " >
+<ng-container *ngIf="registerForm.controls['type'].errors?.['required'] ; then TemplatetypeRequired; "></ng-container>
+<ng-template #TemplatetypeRequired>
+
+  type  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Ligue </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="ligue">
+  <nz-option *ngFor="let option of Ligue" nzLabel={{option.nomLigue}} nzValue={{option.idLigue}} >  </nz-option>
+
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['ligue'].dirty || registerForm.controls['ligue'].touched) " >
+<ng-container *ngIf="registerForm.controls['ligue'].errors?.['required'] ; then TemplateligueRequired; "></ng-container>
+<ng-template #TemplateligueRequired>
+
+  Ligue  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label>Stade </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"  formControlName="stade">
+  <nz-option *ngFor="let option of Satdes" nzLabel={{option.nom}} nzValue={{option.idStade}} >  </nz-option>
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['stade'].dirty || registerForm.controls['stade'].touched) " >
+<ng-container *ngIf="registerForm.controls['stade'].errors?.['required'] ; then TemplatestadeRequired; "></ng-container>
+<ng-template #TemplatestadeRequired>
+
+  Stade   is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label>Equipe </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="Equipe">
+  <nz-option *ngFor="let option of Equipe" nzLabel={{option.nom}} nzValue={{option.idEquipe}} >  </nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['Equipe'].dirty || registerForm.controls['Equipe'].touched) " >
+<ng-container *ngIf="registerForm.controls['Equipe'].errors?.['required'] ; then TemplatecoachRequired; "></ng-container>
+<ng-template #TemplatecoachRequired>
+
+  Equipe  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit"  [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<nz-modal [(nzVisible)]="isVisibleupdate" nzTitle=" Update Match"    (nzOnCancel)="handleCancelupdate()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()" >
+ 
+    <nz-form-item>
+      <nz-form-label>Coach</nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="Coach">
+  
+  <nz-option *ngFor="let option of Coeach" nzLabel={{option.username}} nzValue={{option.idUtil}} >  </nz-option>
+
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['Coach'].dirty || registerForm.controls['Coach'].touched) " >
+<ng-container *ngIf="registerForm.controls['type'].errors?.['required'] ; then TemplateCoachRequired; "></ng-container>
+<ng-template #TemplateCoachRequired>
+
+  Coach  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Type</nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="type">
+  <nz-option nzLabel="1" nzValue="1"></nz-option>
+  
+  <nz-option nzLabel="2" nzValue="2"></nz-option>
+  <nz-option nzLabel="3" nzValue="3"></nz-option>
+  <nz-option nzLabel="4" nzValue="4"></nz-option>
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['type'].dirty || registerForm.controls['type'].touched) " >
+<ng-container *ngIf="registerForm.controls['type'].errors?.['required'] ; then TemplatetypeRequired; "></ng-container>
+<ng-template #TemplatetypeRequired>
+
+  type  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label>Ligue </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="ligue">
+  <nz-option *ngFor="let option of Ligue" nzLabel={{option.nomLigue}} nzValue={{option.idLigue}} >  </nz-option>
+
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['ligue'].dirty || registerForm.controls['ligue'].touched) " >
+<ng-container *ngIf="registerForm.controls['ligue'].errors?.['required'] ; then TemplateligueRequired; "></ng-container>
+<ng-template #TemplateligueRequired>
+
+  Ligue  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label>Stade </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"  formControlName="stade">
+  <nz-option *ngFor="let option of Satdes" nzLabel={{option.nom}} nzValue={{option.idStade}} >  </nz-option>
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['stade'].dirty || registerForm.controls['stade'].touched) " >
+<ng-container *ngIf="registerForm.controls['stade'].errors?.['required'] ; then TemplatestadeRequired; "></ng-container>
+<ng-template #TemplatestadeRequired>
+
+  Stade   is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label>Equipe </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Team"   formControlName="Equipe">
+  <nz-option *ngFor="let option of Equipe" nzLabel={{option.nom}} nzValue={{option.idEquipe}} >  </nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['Equipe'].dirty || registerForm.controls['Equipe'].touched) " >
+<ng-container *ngIf="registerForm.controls['Equipe'].errors?.['required'] ; then TemplatecoachRequired; "></ng-container>
+<ng-template #TemplatecoachRequired>
+
+  Equipe  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit"  [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal>
+<div class="Marge">
+<nz-table #editRowTable nzBordered [nzData]="Match" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th nzWidth="15%">Type</th>
+        <th nzWidth="15%">Ligue</th>
+        <th nzWidth="15%">Stade</th>
+        <th nzWidth="15%">Equipe</th>
+        <th nzWidth="15%">Coach</th>
+        <th nzWidth="15%">Action</th>
+
+
+ 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of Match">
+        <ng-container >
+          <td>{{ data.type }}</td>
+          <td>{{ data.ligue.nomLigue }}</td>
+          <td>{{ data.stade.nom }}</td>
+          <td>{{ data.equipeAdversaire.nom }}</td>
+          <td>{{ data.coach.username }}</td>
+
+          <td><a  (click)="showModalupdate(data)" >Edit</a> <br><a (click)="showConfirm(data.idMatch)" >Delete</a></td>
+        </ng-container>
+
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

@@ -55,16 +55,20 @@ export class CalendarComponent implements OnInit {
    public hidden = false;
    Permission:any;
    eventForm!: FormGroup;
+   eventFormupdate!: FormGroup;
    eventName!:FormControl;
    selectedValue:any=null;
    DateCompare:Date=new Date();
    eventend!:FormControl;
    showNumerNotif:boolean=true;
    public userList : User[]=[];
+   isVisibleupdate= false;
    eventPattern = "[a-zA-z]*$";
    NewDateEvent:any;
   isVisible = false;
+  idevent:any
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
+  @ViewChild('modalContent2', { static: true }) modalContent2!: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
@@ -110,22 +114,77 @@ export class CalendarComponent implements OnInit {
   constructor(private modal: NgbModal,private router:Router,public api:ApiService, private fb: FormBuilder, private stompService: StompService, private services:CalendarService,private toast:ToastrService) {
     this.eventForm = new FormGroup({
       eventName: new FormControl(),
+      describtion: new FormControl(),
+    });
+    this.eventFormupdate = new FormGroup({
+      eventdebutupdate: new FormControl(),
+      eventendupdate: new FormControl(),
+      titreupdate: new FormControl(),
+
+    });
+    this.eventFormupdate = this.fb.group({
+      eventdebutupdate: ['', [Validators.required,]],
+      eventendupdate: ['', [Validators.required,]],
+      titreupdate: ['', [Validators.required,]],
+
     });
     this.eventForm = this.fb.group({
-      eventName: ['', [Validators.required,Validators.maxLength(8),Validators.minLength(4)]],
-
+      eventName: ['', [Validators.required,]],
       eventend: ['', [Validators.required ]],
-      username: ['', [Validators.required ]],
+      describtion: ['', [Validators.required ]],
 
 
     })
   }
  
    
+  showModalupdate(user: CalendarEvent): void {
+    this.modal.open(this.modalContent2,{ size: 'lg' });
  
+    this.idevent=user.id;
+    this.eventFormupdate.patchValue({
+      titreupdate:  user.title,
+      eventendupdate:  user.end ,
+      eventdebutupdate:user.start
+  
+  
+  
+     })
+    }
+  handleCancelupdate(): void {
+    this.isVisibleupdate = false;
+  }
+  UpdateEvent():void {
+
+    let titre=this.eventFormupdate.controls['titreupdate'].value;
+    let evend=this.eventFormupdate.controls['eventendupdate'].value;
+    let debut=this.eventFormupdate.controls['eventdebutupdate'].value;
+
+  this.NewEvent ={
+    titre: titre,
+    debut: startOfDay(debut),
+    fin: endOfDay(evend),
+  }
+  this.services.updateCalendar(this.NewEvent,this.idevent)
+    .subscribe({
+      next:(res)=>{
+   alert("Event update successfully");
+   this.modal.dismissAll();
+    window.location.reload();
  
+   
+      },
+      error:()=>{
+        alert("Error while adding the Event")
+        this.modal.dismissAll();
+      }
+      
+    });
+
  
- 
+  }
+
+  
   AddNewEvent():void {
     if(this.Permission==true)
     {
@@ -138,15 +197,14 @@ export class CalendarComponent implements OnInit {
     }else{
       let ev=this.eventForm.controls['eventName'].value;
       let evend=this.eventForm.controls['eventend'].value;
-      let usern=this.eventForm.controls['username'].value;
+      let describtion=this.eventForm.controls['describtion'].value;
 
     this.NewEvent ={
-      title: ev,
-      start: startOfDay(this.NewDateEvent),
-      end: endOfDay(evend),
-      color:'#FF0000',
-      username:usern,
-      Genrate:new Date()
+      titre: ev,
+      debut: startOfDay(this.NewDateEvent),
+      fin: endOfDay(evend),
+      description:describtion,
+       
     }
     this.services.postEvent(this.NewEvent)
       .subscribe({
@@ -157,7 +215,7 @@ export class CalendarComponent implements OnInit {
   this.modal.dismissAll();
         },
         error:()=>{
-          alert("Error while adding the Livraison")
+          alert("Error while adding the Event")
         }
         
       });
@@ -172,7 +230,7 @@ export class CalendarComponent implements OnInit {
           draggable: false,
         },
       ];
-      window.location.reload();
+      //window.location.reload();
       this.modal.dismissAll();
     }
   }
@@ -226,13 +284,7 @@ export class CalendarComponent implements OnInit {
     this.modalData = { event, action };
      this.modal.open(this.modalContent, { size: 'lg' });
   }
-  getImage()
-  {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}'); 
-  this.imageSrc="http://localhost:8065/api/downloadFile/"+this.user.id;
-  
-
-  } 
+ 
   Logout()
   { 
     localStorage.removeItem('user');
@@ -262,7 +314,7 @@ export class CalendarComponent implements OnInit {
     this.services.deleteEvent(eventToDelete.id).subscribe( {
       next:(res)=>{
         alert("Event delted successfully");
-        window.location.reload();
+       // window.location.reload();
 
 
     
@@ -282,46 +334,22 @@ export class CalendarComponent implements OnInit {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
-  get5LastNotifications() {
-    this.api.getNotif().subscribe(res => {
-      this.notifications = res;
-      this.nbNotif=this.notifications.length;
-    });
-  }
-  getAllUser(){
-    this.api.getUser()
-    .subscribe((res)=>{
-      this.userList=res;
-    })
-  } 
+ 
+ 
   ngOnInit(): void {
-    this.Permission=JSON.parse(localStorage.getItem('Permission') || '{}'); 
-this.getAllUser();
-    this.get5LastNotifications();
-    this.getImage();
-    this.getAllEvent();
-    this.user = JSON.parse(localStorage.getItem('user') || '{}'); 
-   
-
-
-
- 
- 
-  }
-
-
-  public openNotification(state: boolean) {
   
-    this.showNotification = state;
-    if(state==true)
-    {
-      this.showNumerNotif=false;
-    }
-    else{
-      this.showNumerNotif=true;
+ 
+    this.getAllEvent();
+    this.refresh=new   Subject<void>();
 
-    }
+
+
+ 
+ 
   }
+
+
+ 
   
   getAllEvent() {
     this.services.getAllEvent().subscribe(event => {
@@ -332,12 +360,12 @@ this.getAllUser();
       {
         this.AllEvent={
           
-            title: ev.title,
-            start: startOfDay(new Date(ev.start)),
-            end: endOfDay(new Date (ev.end)),
+            title: ev.titre,
+            start: startOfDay(new Date(ev.debut)),
+            end: endOfDay(new Date (ev.fin)),
             color: colors.blue,
             draggable: false,
-            id:ev.id
+            id:ev.idEvenement
           
         }
        

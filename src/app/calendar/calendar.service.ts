@@ -16,22 +16,22 @@ export class CalendarService {
 
 
   postEvent(data : any){
-    return this.http.post<any>("http://localhost:8065/api/event/addEvent",data);
+    return this.http.post<any>("http://localhost:8080/projet/evenement/create",data);
   }
    getCalendar():Observable<any>{
     return this.http.get<Calendar>("http://localhost:8080/users");
   }
 
   getAllEvent():Observable<any>{
-    return this.http.get<any>("http://localhost:8065/api/event/GetAllEvent");
+    return this.http.get<any>("http://localhost:8080/projet/evenement");
   }
  
-updateCalendar(calendar:Calendar, id:number):Observable<any>{
-    return this.http.put<any>("http://localhost:8080/updateUser/"+id,calendar)}
+updateCalendar(calendar:any,id:any):Observable<any>{
+    return this.http.put<any>("http://localhost:8080/projet/evenement/edit/"+id,calendar)}
 
 
 deleteEvent(data :any):Observable<any>{
   
-  return this.http.delete<any>("http://localhost:8065/api/event/deleteEvent/"+data);
+  return this.http.delete<any>("http://localhost:8080/projet/evenement/delete/"+data);
 } 
 }

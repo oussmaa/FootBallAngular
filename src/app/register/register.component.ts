@@ -22,8 +22,7 @@ export class RegisterComponent implements OnInit {
   usernamePattern="[a-zA-z1-9_]{5,}";
   nameAndLastnamePattern = "^[a-zA-Z_]{5,}$";
   emailPattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
-  passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
+ 
 
   submitForm(): void {
     if (this.registerForm.invalid){
@@ -35,26 +34,40 @@ export class RegisterComponent implements OnInit {
       let password=this.registerForm.controls['password'].value;
       let email=this.registerForm.controls['email'].value;
       let confirmPassword=this.registerForm.controls['confirmPassword'].value;
-      let Post=this.registerForm.controls['Post'].value;
+      let numTelUtil=this.registerForm.controls['numTelUtil'].value;
  
-      let Equipe=this.registerForm.controls['Equipe'].value;
+      
 this.user={
-      "username":username,
-      "firstName":name,
-      "lastName":lastname,
-      "poste":Post,
-      "equipe":Equipe,
-      "email":email,
-      "role":"User",
-       "password":password,
-       "imageUrl":"",
-       "valid":false
+  "image": null,
+  "username": username,
+  "password":password,
+  "enabled": false,
+  "nomUtil": name,
+  "prenomUtil": lastname,
+  "numTelUtil": numTelUtil,
+  "emailUtil": email,
+  "roles": [
+      {
+          
+          "role": "Admin"
       }
+  ]
+}
+      
        this.service.postUser(this.user)
        .subscribe(
          res => {
-           alert("Register successfully");
-           this.router.navigateByUrl('/login')
+          if(res==undefined)
+          {
+            alert("Please Try with Another Email ");
+          }
+          else{
+            localStorage.setItem('register',JSON.stringify(res));
+
+            alert("Register successfully");
+            this.router.navigateByUrl('/login')
+          }
+
  
          },
           err=>{
@@ -75,8 +88,8 @@ this.user={
       password:new FormControl(),
       confirmPassword:new FormControl(),
       username:new FormControl(),
-      Post:new FormControl(),
-      Equipe:new FormControl(),
+      numTelUtil:new FormControl(),
+     
 
   });
   this.registerForm = this.fb.group({
@@ -84,11 +97,11 @@ this.user={
     name: ['', [Validators.required,Validators.pattern(this.nameAndLastnamePattern) ]],
     lastname: ['', [Validators.required,Validators.pattern(this.nameAndLastnamePattern)] ],
     email:['', [Validators.required,Validators.pattern(this.emailPattern)] ],
-    password:['', [Validators.required,Validators.pattern(this.passwordPattern)] ],
-    confirmPassword:['', [Validators.required,Validators.pattern(this.passwordPattern)] ],
+    password:['', [Validators.required, ] ],
+    confirmPassword:['', [Validators.required, ] ],
     username:['', [Validators.required,Validators.pattern(this.usernamePattern)] ],
-    Post:['', [Validators.required]],
-    Equipe:['', [Validators.required ]],
+    numTelUtil:['', [Validators.required]],
+   
 
 
  });

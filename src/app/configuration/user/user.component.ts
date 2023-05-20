@@ -101,7 +101,7 @@ export class UserComponent implements OnInit {
               {
                 console.log(event)
                 console.log(row)
-                this.api.updateUser(row.valid,row.id).subscribe(data=> console.log('data',data))
+              
 
               }
 
@@ -234,8 +234,7 @@ alert("Don't Have Permission ")
   updateUser(){
     console.log(this.Id)
     this.userForm.get('id')?.setValue(this.Id)
-    this.api.updateUser(this.userForm.value,this.Id).subscribe(data=> console.log('data',data))
-    this.isVisible2=false;
+     this.isVisible2=false;
    this.getAllUser();
 }
 

@@ -1,0 +1,93 @@
+<app-sid-bar></app-sid-bar>
+
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout Marque</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add marque" (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label >nom</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+        <ng-template #TemplateUsernameInvalid>
+  
+            nom is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+ 
+ 
+ 
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Update marque" (nzOnCancel)="handleCancelupdate()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()">
+    <nz-form-item>
+        <nz-form-label >nom</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched) " >
+          <ng-container *ngIf="registerForm.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+          <ng-template #TemplateUsernameInvalid>
+    
+              nom is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+ 
+ 
+   
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid" >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<div class="Marge">
+<nz-table #editRowTable nzBordered nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th nzWidth="40%">Nom</th>
+  
+
+        <th>Action</th>
+
+ 
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of marque">
+        <ng-container >
+          <td>{{ data.nom }}</td>
+  
+
+          <td><a  (click)="showModalupdate(data)" >Edit</a> <br><a (click)="showConfirm(data.idMarque)" >Delete</a></td>
+        </ng-container>
+ 
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

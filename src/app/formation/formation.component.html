@@ -1,0 +1,190 @@
+ 
+<app-sid-bar></app-sid-bar>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add Formation" (nzOnCancel)="handleCancel()" >
+    <ng-container *nzModalContent>
+    <form [formGroup]="addExerciceFormGroup" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label >nom </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(addExerciceFormGroup.controls['nom'].dirty || addExerciceFormGroup.controls['nom'].touched) " >
+          <ng-container *ngIf="addExerciceFormGroup.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+          <ng-template #TemplateUsernameInvalid>
+    
+              nom is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >type </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="type"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(addExerciceFormGroup.controls['type'].dirty || addExerciceFormGroup.controls['type'].touched) " >
+          <ng-container *ngIf="addExerciceFormGroup.controls['type'].errors?.['required'] ; then TemplatetypeInvalid"></ng-container>
+          <ng-template #TemplatetypeInvalid>
+    
+            type is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >description </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="description"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(addExerciceFormGroup.controls['description'].dirty || addExerciceFormGroup.controls['description'].touched) " >
+          <ng-container *ngIf="addExerciceFormGroup.controls['description'].errors?.['required'] ; then TemplatdescriptionInvalid"></ng-container>
+          <ng-template #TemplatdescriptionInvalid>
+    
+            description is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+ 
+      <nz-form-item>
+        <nz-form-label >Image</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input class=" btn btn-fill btn-danger" accept="image/*" formControlName="image" (change)="onFilechange($event)" type="file"  /> 
+      </nz-form-control> 
+ 
+      </nz-form-item>
+   
+   
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.addExerciceFormGroup.invalid"  >Save</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    
+  
+      </ng-container>
+  </nz-modal> 
+  <nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Update" (nzOnCancel)="handleCancel()" >
+    <ng-container *nzModalContent>
+    <form [formGroup]="addExerciceFormGroup" (ngSubmit)="submitFormupdate()">
+      <nz-form-item>
+        <nz-form-label >nom </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(addExerciceFormGroup.controls['nom'].dirty || addExerciceFormGroup.controls['nom'].touched) " >
+          <ng-container *ngIf="addExerciceFormGroup.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+          <ng-template #TemplateUsernameInvalid>
+    
+              nom is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >type </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="type"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(addExerciceFormGroup.controls['type'].dirty || addExerciceFormGroup.controls['type'].touched) " >
+          <ng-container *ngIf="addExerciceFormGroup.controls['type'].errors?.['required'] ; then TemplatetypeInvalid"></ng-container>
+          <ng-template #TemplatetypeInvalid>
+    
+            type is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >description </nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="description"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(addExerciceFormGroup.controls['description'].dirty || addExerciceFormGroup.controls['description'].touched) " >
+          <ng-container *ngIf="addExerciceFormGroup.controls['description'].errors?.['required'] ; then TemplatdescriptionInvalid"></ng-container>
+          <ng-template #TemplatdescriptionInvalid>
+    
+            description is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+ 
+      <nz-form-item>
+        <nz-form-label >Image</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input class=" btn btn-fill btn-danger" accept="image/*" formControlName="image" (change)="onFilechange($event)" type="file"  /> 
+      </nz-form-control> 
+ 
+      </nz-form-item>
+   
+   
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.addExerciceFormGroup.invalid"  >Save</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    
+  
+      </ng-container>
+  </nz-modal> 
+<div class="Marge">
+
+
+
+    <div class=" titlee ">
+        <div style="margin-left: 1000px ;"><a class="btn btn-success" style="border-radius: 15px;" (click)="showModal()">Ajouter</a></div>
+        <div class="row mt-1">
+            <div class="col-md-1"></div>
+            <div class="col-md-12">
+                <table class="table table-striped tablee">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Nom </th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th width="50%">Actions</th>
+    
+    
+                    </tr>
+                </thead>
+                <tbody *ngFor="let exercice of listExercice ">
+                    <tr>
+                        <td>
+                            <img src="{{exercice.image}}" class="img-responsive" width ="80px">
+                        </td>
+                        <td>
+                        <p style="margin-top: 10px;">{{ exercice.nom }}</p>
+                        </td>
+                        <td>
+                        <p style="margin-top: 10px;">{{ exercice.type }} </p>
+                        </td>
+                        <td>
+                        <p style="margin-top: 10px;">{{ exercice.description }}</p>
+                        </td>
+                        <td rowspan="2">
+                            <button class="btn btn-success " (click)="showModalupdate(exercice)" style="border-radius: 15px;">Modfier</button>
+                            <button type="button"  (click)="deleteProduct(exercice)" class="btn btn-danger m-2" style="border-radius: 15px;">Supprimer</button>
+                        </td>
+                    </tr>
+    
+                </tbody>
+                </table>
+            </div>
+    
+            
+        </div>
+        
+       
+    </div>
+
+</div>

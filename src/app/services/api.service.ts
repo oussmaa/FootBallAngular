@@ -17,13 +17,13 @@ export class ApiService {
     })
   }
   postUser(data : any){
-    return this.http.post<any>("http://localhost:8065/api/auth/signup",
+    return this.http.post<any>("http://localhost:8080/projet/user/createUtilisateur",
  data
  );
  
   }
   signIn(data : any){
-    return this.http.post<any>("http://localhost:8065/api/auth/signin",
+    return this.http.post<any>("http://localhost:8080/projet/user/signin",
  data
  );}
    getUser():Observable<any>{
@@ -53,7 +53,6 @@ export class ApiService {
     const id = user.id;
     return this.http.delete<any>("http://localhost:8065/api/event/deleteUser/"+id);
   } 
-updateUser(user:any, id:any):Observable<any>{
-    return this.http.put<any>("http://localhost:8065/api/user/updateUser/"+id,user)}
-
+updateUser(user:any,id:any):Observable<any>{
+    return this.http.put<any>("http://localhost:8080/projet/user/edituser/"+id,user)}
 }

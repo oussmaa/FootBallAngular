@@ -18,7 +18,7 @@ export class AutGardGuard implements CanActivate {
  
 
   canActivate() {
-    if (this.user.accessToken==undefined) {
+    if (this.user.emailUtil==undefined) {
       this.router.navigate(['/login']);
       return false;
     }  

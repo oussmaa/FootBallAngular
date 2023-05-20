@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from '../service/users.service';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -11,13 +12,15 @@ import { ApiService } from '../services/api.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   usernamePattern="[a-zA-z1-9_]{5,}";
-  passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&_-]{8,}$/;
-  data:any;
+   data:any;
   user:any;
+  users:any;
+
+  testlogin=false;
 
   submitForm(): void {
 
-    if (this.loginForm.invalid){
+   if (this.loginForm.invalid){
       this.loginForm.markAllAsTouched();
     }else{
       let username=this.loginForm.controls['username'].value;
@@ -25,44 +28,37 @@ export class LoginComponent implements OnInit {
 
       this.user={
         "username":username,
-         "password":password
+        "password":password
         }
-         this.servicre.signIn(this.user)
+         this.servicre.login(this.user)
          .subscribe(
            res => {
-            localStorage.setItem('user',JSON.stringify(res));
-            if(res.valid==true)
-            {
+            
+            this.servicre.GetUserUserByusername(username).subscribe(rese => {
+             if(rese.enabled==true)
+             {
+              localStorage.setItem('user',JSON.stringify(rese));
 
+              this.router.navigate(['/actulatite'])
+             }
+             else{
+              alert("Please Verify your Email")
+             }
          
-         if(res.roles=="User")
-         {
-          localStorage.setItem('Permission',JSON.stringify(true));
 
-         }
-       
-         else{
-          localStorage.setItem('Permission',JSON.stringify(false));
-
-         }
-         this.router.navigate(['/scripts'])
-        }
-        else{
-          alert("User Not Have Permission")
-
-        }
-          
-         
+             });
+            
            },
-            err=>{
+            ()=>{
               alert("Please Verif Your Password Or Username ")
 
            }
          );
     }
+
    }
    
-   constructor(private fb: FormBuilder, private servicre:ApiService,private router:Router) {
+   constructor(private fb: FormBuilder, private servicre:UsersService,private router:Router) {
 
 
  
@@ -73,7 +69,7 @@ export class LoginComponent implements OnInit {
 
   this.loginForm = this.fb.group({
     username: ['', [Validators.required,Validators.pattern(this.usernamePattern) ]],
-    password: ['', [Validators.required,Validators.pattern(this.passwordPattern)] ],
+    password: ['', [Validators.required]],
 
 
   })

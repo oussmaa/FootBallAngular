@@ -131,6 +131,23 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { NavMenuComponent } from './Shared/nav-menu/nav-menu.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { ProblemComponent } from './problem/problem.component';
+import { SidBarComponent } from './sid-bar/sid-bar.component';
+import { ActulatiteComponent } from './actulatite/actulatite.component';
+import { AjoutStadeComponent } from './ajout-stade/ajout-stade.component';
+import { AjoutProduitComponent } from './ajout-produit/ajout-produit.component';
+import { AjoutMatchComponent } from './ajout-match/ajout-match.component';
+import { GestionUsersComponent } from './gestion-users/gestion-users.component';
+import { SystemjeuxComponent } from './systemjeux/systemjeux.component';
+import { AjoutArtikelComponent } from './ajout-artikel/ajout-artikel.component';
+import { AjoutEquipeComponent } from './ajout-equipe/ajout-equipe.component';
+import { AjoutLigueComponent } from './ajout-ligue/ajout-ligue.component';
+import { AjoutMarqueComponent } from './ajout-marque/ajout-marque.component';
+import { AjoutCategorieComponent } from './ajout-categorie/ajout-categorie.component';
+import { MotPassOblierComponent } from './mot-pass-oblier/mot-pass-oblier.component';
+import { ValidEmailComponent } from './valid-email/valid-email.component';
+import { ValidPasswordComponent } from './valid-password/valid-password.component';
+import { ExerciceComponent } from './exercice/exercice.component';
+import { FormationComponent } from './formation/formation.component';
  
  
 
@@ -141,7 +158,7 @@ registerLocaleData(fr);
   declarations: [
     AppComponent,
     LoginComponent,
-   HistoriqueComponent,
+    HistoriqueComponent,
     CalendarComponent,
     UserComponent,
     ProfilComponent,
@@ -152,7 +169,25 @@ registerLocaleData(fr);
     NotificationComponent,
     TestComponent,
     NavMenuComponent,
-    ProblemComponent
+    ProblemComponent,
+    SidBarComponent,
+    ActulatiteComponent,
+    AjoutStadeComponent,
+    AjoutProduitComponent,
+    AjoutMatchComponent,
+    GestionUsersComponent,
+    SystemjeuxComponent,
+    AjoutArtikelComponent,
+    AjoutEquipeComponent,
+    AjoutLigueComponent,
+    AjoutMarqueComponent,
+    AjoutCategorieComponent,
+    AjoutProduitComponent,
+    MotPassOblierComponent,
+    ValidEmailComponent,
+    ValidPasswordComponent,
+    ExerciceComponent,
+    FormationComponent
    
   ],
   imports: [

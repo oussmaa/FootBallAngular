@@ -1,128 +1,14 @@
-<nz-layout class="app-layout">
-    <nz-sider class="menu-sidebar"
-              nzCollapsible
-              nzWidth="256px"
-              nzBreakpoint="md"
-              [(nzCollapsed)]="isCollapsed"
-              [nzTrigger]="null">
-      <div class="sidebar-logo">
-        <img
-  nz-image
-      width="100px"
-      height="500px"
-      nzSrc="assets/images/ng.PNG"
-      alt="new access"/>
-          <h1>New access</h1>
-        
-      </div>
-      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-        <li nz-submenu  nzTitle="Produit APSYS" routerLink="/produit" nzIcon="unordered-list" nzTheme="outline">
-          <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a >APSYS_dev_code</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a>APSYS_pkb_pr4</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a>APSYS_pr1</a>
-            </li>
-          </ul>
-        </li>
-        <li nz-submenu  nzTitle="Calendrier" routerLink="/calendar" nzIcon="calendar" ></li>
-        <li nz-submenu  nzTitle="Historique" routerLink="/history"   nzIcon="history" >
-          <li nz-submenu  nzTitle="Problem"routerLink="/Problem"   nzIcon="inbox" >
-
-      </li>
-        <li nz-submenu  nzTitle="Configuration" nzIcon="unordered-list" nzTheme="outline">
-          
-              <ul>
-                <li nz-menu-item nzMatchRouter>
-                  <a routerLink="/user" >Utilisateurs</a>
-                
-                <li nz-menu-item nzMatchRouter>
-                  <a>Profil</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-       
-    </nz-sider>
-    <nz-layout>
-      <nz-header>
-        <div class="app-header">
-          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-              <i class="trigger"
-                 nz-icon
-                 [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-              ></i></span>
-  
-              <div class="menu">
-              
-              <button mat-mini-fab color="primary" [matMenuTriggerFor]="menu" >
-                <nz-avatar nzIcon="user"   [nzSrc]="imageSrc "></nz-avatar>
-              </button>
-              <mat-menu #menu="matMenu">
-                <button mat-menu-item>
-                  <i nz-icon nzType="user" nzTheme="outline"></i>
-                  My profile
-                </button>
  
-                <button mat-menu-item   (click)="Logout()" >
-                  <i nz-icon nzType="logout" nzTheme="outline" > </i>
-                  Logout
-                </button>
-              </mat-menu></div>
-              <div class="notification-wrapper">
-                <!-- You can put an icon from Material Design icon or Fontawesome -->
-                <div class="notification-btn" >
-                  <span class="mdi mdi-bell"></span>
-                  <button mat-icon-button color="basic" (click)="openNotification(!showNotification)">
-                    <i class="fa fa-bell"></i>
-                     <span *ngIf="showNumerNotif" class="badge">{{nbNotif}}</span>
+       <app-sid-bar></app-sid-bar>
  
-                  </button>
-                </div>
-                <div *ngIf="showNotification" class="notification-content" >
  
-                 
-
-                  <div class="dropdown-menu notification-ui_dd show" aria-labelledby="navbarDropdown">
-                    <div class="notification-ui_dd-header">
-                      <h3 class="text-center">Notification</h3>
-                    </div>
-                    <div   *ngFor="let not of notifications">
-                      <a  class="notification-list " style="background-color:rgb(254, 254, 254) ; height: 50px; padding: 3px;text-decoration: none;">
-                        <img src="assets/images/icon.png" alt="Snow" style="width:50px">
-                        <small style="text-decoration: none;">{{not.text}}</small> 
-                         <small>{{ not.avatar| date: "dd MMMM yyyy" }}</small>
-                         <br><br>
-                         <small>{{ not.username| date: "dd MMMM yyyy" }}</small>
-    
-                        </a>
-    
-    
-    
-    
-    
-                    </div>
- 
-                  </div>
-                      </div>
-                  </div>
-        </div>
-       
-      </nz-header>
-      <nz-content>
-    
-   
-<div class=" content">
+ <div class="Marge">
   <div class=" row">
     <div class=" col-md-8">
       <div class=" card">
         <div class=" card-header"><h5 class=" title">Edit Profile</h5></div>
         <div class=" card-body">
-          <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+          <form [formGroup]="registerForm"  >
             <div class=" row">
               <div class=" col-md-8 pl-md-1">
                 <div class=" form-group">
@@ -161,17 +47,12 @@
                 </div>
                 <div>
                   <div style="display: block; font-size: 15px; color:rgb(246, 15, 15)"  *ngIf="(registerForm.controls['name'].dirty || registerForm.controls['name'].touched) " >
-                    <ng-container *ngIf="registerForm.controls['name'].errors?.['required'] ; then TemplateNameRequired; else TemplateNameInvalid"></ng-container>
+                    <ng-container *ngIf="registerForm.controls['name'].errors?.['required'] ; then TemplateNameRequired;  "></ng-container>
                     <ng-template #TemplateNameRequired>
             
                       Name is required
                     </ng-template>
-                    <ng-template #TemplateNameInvalid>
-                      <ng-container *ngIf="registerForm.controls['name'].errors?.['pattern']">
-                        name must be at least 5 characters long and contain only letters,
-                         numbers, and underscores.
-                      </ng-container>
-                    </ng-template>
+
             
                   </div>
               </div>
@@ -187,17 +68,12 @@
                   />
                 </div>
                 <div style="display: block; font-size: 15px; color:rgb(240, 0, 0)"  *ngIf="(registerForm.controls['lastname'].dirty || registerForm.controls['lastname'].touched) " >
-                  <ng-container *ngIf="registerForm.controls['lastname'].errors?.['required'] ; then TemplateLastnameRequired; else TemplateLastnameInvalid"></ng-container>
+                  <ng-container *ngIf="registerForm.controls['lastname'].errors?.['required'] ; then TemplateLastnameRequired;  "></ng-container>
                   <ng-template #TemplateLastnameRequired>
             
                     Lastname is required
                   </ng-template>
-                  <ng-template #TemplateLastnameInvalid>
-                    <ng-container *ngIf="registerForm.controls['lastname'].errors?.['pattern']">
-                      Lastname must be at least 5 characters long and contain only letters,
-                       numbers, and underscores.
-                    </ng-container>
-                  </ng-template>
+        
             
                 </div>
               </div>
@@ -205,60 +81,31 @@
             
       
             <div class=" row">
-              <div class=" col-md-4 pr-md-1">
-                <div class=" form-group">
-                  <label> Equipe </label>
-                  <input
-                    class=" form-control"
-                    placeholder="Equipe"
-                    type="text"
-                    value="APSYS" formControlName="Equipe"
-                  />
-                </div>
-                <div style="display: block; font-size: 15px; color:rgb(246, 15, 15)"  *ngIf="(registerForm.controls['Equipe'].dirty || registerForm.controls['Equipe'].touched) " >
-                  <ng-container *ngIf="registerForm.controls['Equipe'].errors?.['required'] ; then TemplateNameRequired; else TemplateNameInvalid"></ng-container>
-                  <ng-template #TemplateNameRequired>
-          
-                    Equipe is required
-                  </ng-template>
-                  <ng-template #TemplateNameInvalid>
-                    <ng-container *ngIf="registerForm.controls['Equipe'].errors?.['pattern']">
-                      Equipe must be at least 5 characters long and contain only letters,
-                       numbers, and underscores.
-                    </ng-container>
-                  </ng-template>
-          
-                </div>
-              </div>
+       
               <div class=" col-md-4 px-md-1">
                 <div class=" form-group">
-                  <label> Poste </label>
+                  <label> numTelUtil </label>
                   <input
                     class=" form-control"
-                    placeholder="poste"
-                    type="text"  formControlName="Post"
-                    value="Engineer"
+                   
+                    type="text"  formControlName="numTelUtil"
+                  
                   />
                 </div>
-                <div style="display: block; font-size: 15px; color:rgb(246, 15, 15)"  *ngIf="(registerForm.controls['Post'].dirty || registerForm.controls['Post'].touched) " >
-                  <ng-container *ngIf="registerForm.controls['Post'].errors?.['required'] ; then TemplateNameRequired; else TemplateNameInvalid"></ng-container>
+                <div style="display: block; font-size: 15px; color:rgb(246, 15, 15)"  *ngIf="(registerForm.controls['numTelUtil'].dirty || registerForm.controls['numTelUtil'].touched) " >
+                  <ng-container *ngIf="registerForm.controls['numTelUtil'].errors?.['required'] ; then TemplateNameRequired;    "></ng-container>
                   <ng-template #TemplateNameRequired>
           
-                    Post is required
+                    num Tel is required
                   </ng-template>
-                  <ng-template #TemplateNameInvalid>
-                    <ng-container *ngIf="registerForm.controls['Post'].errors?.['pattern']">
-                      Post must be at least 5 characters long and contain only letters,
-                       numbers, and underscores.
-                    </ng-container>
-                  </ng-template>
+         
           
                 </div>
               </div>
             </div>
             <div class=" row">
               <div class=" card-footer">
-                <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+                <button class=" btn btn-fill btn-danger" type="submit"  (click)="submitForm()" >Save</button>
               </div>
             </div>
           </form>
@@ -274,19 +121,16 @@
              <div class="image_user"> <img
               nz-image
               width="200px"
-      height="200px" alt="..." class=" avatar"  [nzSrc]="imageSrc "  /> </div>
+      height="200px" alt="..." class=" avatar"  [nzSrc]="imageSrc"  /> </div>
 
-              <h5 class=" title">{{Name}}</h5>
-            <p class=" description">{{Poste}}</p>
+    
           </div>
           <input class=" btn btn-fill btn-danger"  (change)="onFilechange($event)" type="file"  /> 
-           <button  type="button"(click)="this.upload()"  class="btn btn-primary mt-3">Upload</button>
-        </div>
+         </div>
         
       </div>
     </div>
   </div>
 </div>
-      </nz-content>
-    </nz-layout>
-  </nz-layout>
+ 
+ 

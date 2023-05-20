@@ -1,0 +1,16 @@
+.Marge{
+    margin-top: 100px;
+    margin-left: 230px;
+  }
+  .left{
+    margin-right: 100px;
+  }
+  .demo-infinite-container {
+    height: 150px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+  }
+.color{
+  font-size: 15px;
+  color: blue;
+}

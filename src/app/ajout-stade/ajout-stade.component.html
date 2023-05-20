@@ -1,0 +1,181 @@
+<app-sid-bar></app-sid-bar>
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout Stade</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add User" (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label >nom</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+        <ng-template #TemplateUsernameInvalid>
+  
+          nom is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >adresse</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="adresse"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['adresse'].dirty || registerForm.controls['adresse'].touched) " >
+        <ng-container *ngIf="registerForm.controls['adresse'].errors?.['required'] ; then TemplateadresseInvalid"></ng-container>
+        <ng-template #TemplateadresseInvalid>
+  
+          adresse is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >numeroTel</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="numeroTel"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['numeroTel'].dirty || registerForm.controls['numeroTel'].touched) " >
+        <ng-container *ngIf="registerForm.controls['numeroTel'].errors?.['required'] ; then TemplatenumeroTelInvalid"></ng-container>
+        <ng-template #TemplatenumeroTelInvalid>
+  
+          numeroTel is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >email</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="email"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['email'].dirty || registerForm.controls['email'].touched) " >
+        <ng-container *ngIf="registerForm.controls['email'].errors?.['required'] ; then TemplateemailInvalid"></ng-container>
+        <ng-template #TemplateemailInvalid>
+  
+          email is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Add User" (nzOnCancel)="handleCancelupdate()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()">
+    <nz-form-item>
+      <nz-form-label >nom</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+        <ng-template #TemplateUsernameInvalid>
+  
+          nom is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >adresse</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="adresse"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['adresse'].dirty || registerForm.controls['adresse'].touched) " >
+        <ng-container *ngIf="registerForm.controls['adresse'].errors?.['required'] ; then TemplateadresseInvalid"></ng-container>
+        <ng-template #TemplateadresseInvalid>
+  
+          adresse is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >numeroTel</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="numeroTel"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['numeroTel'].dirty || registerForm.controls['numeroTel'].touched) " >
+        <ng-container *ngIf="registerForm.controls['numeroTel'].errors?.['required'] ; then TemplatenumeroTelInvalid"></ng-container>
+        <ng-template #TemplatenumeroTelInvalid>
+  
+          numeroTel is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >email</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="email"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['email'].dirty || registerForm.controls['email'].touched) " >
+        <ng-container *ngIf="registerForm.controls['email'].errors?.['required'] ; then TemplateemailInvalid"></ng-container>
+        <ng-template #TemplateemailInvalid>
+  
+          email is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<div class="Marge">
+<nz-table #editRowTable nzBordered nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th nzWidth="15%">nom</th>
+        <th nzWidth="15%">adresse</th>
+        <th nzWidth="10%">numeroTel</th>
+        <th nzWidth="30%">email</th>
+
+        <th>Action</th>
+
+ 
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of satde">
+        <ng-container >
+          <td>{{ data.nom }}</td>
+          <td>{{ data.adresse }}</td>
+          <td>{{ data.numeroTel }}</td>
+          <td>{{ data.email }}</td>
+
+
+          <td><a  (click)="showModalupdate(data)" >Edit</a> <br><a (click)="showConfirm(data.idStade)" >Delete</a></td>
+        </ng-container>
+ 
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

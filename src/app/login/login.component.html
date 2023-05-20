@@ -55,18 +55,12 @@
 						<input type="password" class="form-control" placeholder="password" formControlName="password">
 					</div>
           <div style="display: block; font-size: 15px; color:rgb(255, 205, 205)"  *ngIf="(loginForm.controls['password'].dirty || loginForm.controls['password'].touched) " >
-            <ng-container *ngIf="loginForm.controls['password'].errors?.['required'] ; then TemplatePasswordRequired; else TemplatePasswordInvalid"></ng-container>
+            <ng-container *ngIf="loginForm.controls['password'].errors?.['required'] ; then TemplatePasswordRequired;    "></ng-container>
             <ng-template #TemplatePasswordRequired>
 
               Password is required
             </ng-template>
-            <ng-template #TemplatePasswordInvalid>
-              <ng-container *ngIf="loginForm.controls['password'].errors?.['pattern']">
-                Password must contain at least one number and one uppercase and lowercase letter,
-                and at least 8 or more characters.
-                <br>
-              </ng-container>
-            </ng-template>
+  
 
           </div>
 					<div class="row align-items-center remember">
@@ -82,7 +76,7 @@
 					Don't have an account?<a href="#"  routerLink="/register">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Forgot your password?</a>
+					<a routerLink="/forgetpassword">Forgot your password?</a>
 				</div>
 			</div>
 		</div>

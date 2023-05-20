@@ -1,0 +1,397 @@
+<app-sid-bar></app-sid-bar>
+
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout Produit</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Add Produit" (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label >Nom Produit</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nomProduit"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nomProduit'].dirty || registerForm.controls['nomProduit'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nomProduit'].errors?.['required'] ; then TemplatenomProduitInvalid"></ng-container>
+        <ng-template #TemplatenomProduitInvalid>
+  
+          nomProduit is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Prix Produit</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="prix"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['prix'].dirty || registerForm.controls['prix'].touched) " >
+        <ng-container *ngIf="registerForm.controls['prix'].errors?.['required'] ; then TemplateprixInvalid"></ng-container>
+        <ng-template #TemplateprixInvalid>
+  
+            prix is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >description</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="description"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['description'].dirty || registerForm.controls['description'].touched) " >
+        <ng-container *ngIf="registerForm.controls['description'].errors?.['required'] ; then TemplatedescriptionInvalid"></ng-container>
+        <ng-template #TemplatedescriptionInvalid>
+  
+          description is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >couleur</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="couleur"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['couleur'].dirty || registerForm.controls['couleur'].touched) " >
+        <ng-container *ngIf="registerForm.controls['couleur'].errors?.['required'] ; then TemplatecouleurInvalid"></ng-container>
+        <ng-template #TemplatecouleurInvalid>
+  
+            couleur is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >taille</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="taille"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['taille'].dirty || registerForm.controls['taille'].touched) " >
+        <ng-container *ngIf="registerForm.controls['taille'].errors?.['required'] ; then TemplatetailleInvalid"></ng-container>
+        <ng-template #TemplatetailleInvalid>
+  
+            Taile is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >genre</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="genre"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['genre'].dirty || registerForm.controls['genre'].touched) " >
+        <ng-container *ngIf="registerForm.controls['genre'].errors?.['required'] ; then TemplategenreInvalid"></ng-container>
+        <ng-template #TemplategenreInvalid>
+  
+          genre is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Moy</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Moy"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['Moy'].dirty || registerForm.controls['Moy'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Moy'].errors?.['required'] ; then TemplateMoyInvalid"></ng-container>
+        <ng-template #TemplateMoyInvalid>
+  
+          Moy is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Image</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input class=" btn btn-fill btn-danger" accept="image/*" formControlName="image" (change)="onFilechange($event)" type="file"  /> 
+    </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['image'].dirty || registerForm.controls['image'].touched) " >
+        <ng-container *ngIf="registerForm.controls['image'].errors?.['required'] ; then TemplateimageInvalid"></ng-container>
+        <ng-template #TemplateimageInvalid>
+  
+          image is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label>categorie </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a cate"   formControlName="categorie">
+  <nz-option *ngFor="let option of categorie" nzLabel={{option.label}} nzValue={{option.idCategorie}} >  </nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['categorie'].dirty || registerForm.controls['categorie'].touched) " >
+<ng-container *ngIf="registerForm.controls['categorie'].errors?.['required'] ; then TemplatecategorieRequired; "></ng-container>
+<ng-template #TemplatecategorieRequired>
+
+  categorie  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+
+
+
+    <nz-form-item>
+      <nz-form-label>marque </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a marque"   formControlName="marque">
+  <nz-option *ngFor="let option of marque" nzLabel={{option.nom}} nzValue={{option.idMarque}} >  </nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['marque'].dirty || registerForm.controls['marque'].touched) " >
+<ng-container *ngIf="registerForm.controls['marque'].errors?.['required'] ; then TemplatemarqueRequired; "></ng-container>
+<ng-template #TemplatemarqueRequired>
+
+  marque  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Add Categorie" (nzOnCancel)="handleCancelupdate()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()">
+    <nz-form-item>
+      <nz-form-label >Nom Produit</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nomProduit"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nomProduit'].dirty || registerForm.controls['nomProduit'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nomProduit'].errors?.['required'] ; then TemplatenomProduitInvalid"></ng-container>
+        <ng-template #TemplatenomProduitInvalid>
+  
+          nomProduit is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Nom Produit</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="prix"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['prix'].dirty || registerForm.controls['prix'].touched) " >
+        <ng-container *ngIf="registerForm.controls['prix'].errors?.['required'] ; then TemplateprixInvalid"></ng-container>
+        <ng-template #TemplateprixInvalid>
+  
+            prix is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >description</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="description"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['description'].dirty || registerForm.controls['description'].touched) " >
+        <ng-container *ngIf="registerForm.controls['description'].errors?.['required'] ; then TemplatedescriptionInvalid"></ng-container>
+        <ng-template #TemplatedescriptionInvalid>
+  
+          description is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >couleur</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="couleur"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['couleur'].dirty || registerForm.controls['couleur'].touched) " >
+        <ng-container *ngIf="registerForm.controls['couleur'].errors?.['required'] ; then TemplatecouleurInvalid"></ng-container>
+        <ng-template #TemplatecouleurInvalid>
+  
+            couleur is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Taille</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="taille"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['taille'].dirty || registerForm.controls['taille'].touched) " >
+        <ng-container *ngIf="registerForm.controls['taille'].errors?.['required'] ; then TemplatetailleInvalid"></ng-container>
+        <ng-template #TemplatetailleInvalid>
+  
+            Taile is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >genre</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="genre"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['genre'].dirty || registerForm.controls['genre'].touched) " >
+        <ng-container *ngIf="registerForm.controls['genre'].errors?.['required'] ; then TemplategenreInvalid"></ng-container>
+        <ng-template #TemplategenreInvalid>
+  
+          genre is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Moy</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Moy"  nzWidth="25%" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['Moy'].dirty || registerForm.controls['Moy'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Moy'].errors?.['required'] ; then TemplateMoyInvalid"></ng-container>
+        <ng-template #TemplateMoyInvalid>
+  
+          Moy is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Image</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input class=" btn btn-fill btn-danger" accept="image/*" formControlName="image" (change)="onFilechange($event)" type="file"  /> 
+    </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['image'].dirty || registerForm.controls['image'].touched) " >
+        <ng-container *ngIf="registerForm.controls['image'].errors?.['required'] ; then TemplateimageInvalid"></ng-container>
+        <ng-template #TemplateimageInvalid>
+  
+          image is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label>categorie </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a categorie"   formControlName="categorie">
+  <nz-option *ngFor="let option of categorie" nzLabel={{option.label}} nzValue={{option.idCategorie}} >  </nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['categorie'].dirty || registerForm.controls['categorie'].touched) " >
+<ng-container *ngIf="registerForm.controls['categorie'].errors?.['required'] ; then TemplatecategorieRequired; "></ng-container>
+<ng-template #TemplatecategorieRequired>
+
+  categorie  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+
+
+
+    <nz-form-item>
+      <nz-form-label>marque </nz-form-label>
+<nz-form-control [nzSm]="14" [nzXs]="24" >
+<nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select marque"   formControlName="marque">
+  <nz-option *ngFor="let option of marque" nzLabel={{option.nom}} nzValue={{option.idMarque}} >  </nz-option>
+ 
+</nz-select>
+</nz-form-control> 
+<div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['marque'].dirty || registerForm.controls['marque'].touched) " >
+<ng-container *ngIf="registerForm.controls['marque'].errors?.['required'] ; then TemplatemarqueRequired; "></ng-container>
+<ng-template #TemplatemarqueRequired>
+
+  marque  is  required
+</ng-template>
+
+
+</div>
+    </nz-form-item>
+ 
+   
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid" >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<div class="Marge">
+<nz-table #editRowTable nzBordered nzTableLayout="fixed">
+    <thead>
+      <tr>
+         <th >  nomProduit</th>
+        <th nzWidth="10%">  prix </th>
+        <th nzWidth="10%"> description</th>
+        <th nzWidth="10%"> couleur</th>
+        <th nzWidth="10%"> taille</th>
+        <th nzWidth="10%"> genre</th>
+        <th nzWidth="10%"> image</th>
+        <th nzWidth="10%"> Moy</th>
+        <th nzWidth="10%"> categorie</th>
+        <th nzWidth="10%"> marque</th>
+
+        <th >Action</th>
+
+ 
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of produit">
+        <ng-container >
+          <td>{{ data.nomProduit }}</td>
+          <td>{{ data.prix }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.couleur }}</td>
+          <td>{{ data.taille }}</td>
+          <td>{{ data.genre }}</td>
+          <td>  <img width="20" height="20"   src={{data.image}} /></td>
+          <td>{{ data.moy }}</td>
+          
+          <td>{{ data.categorie.label }}</td>
+          <td>{{ data.marque.nom }}</td>
+
+          <td><a  (click)="showModalupdate(data)" >Edit</a> <br><a (click)="showConfirm(data.idProduit)" >Delete</a></td>
+        </ng-container>
+ 
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

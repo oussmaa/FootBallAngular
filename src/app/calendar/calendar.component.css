@@ -107,7 +107,9 @@
 	max-width: 400px;
  
 	}
-
+.large{
+  height: 300px;
+}
 :host ::ng-deep .ant-tabs-tabpane {
     padding: 24px;
     overflow: auto;
@@ -153,6 +155,10 @@
     font-size: 20px;
     cursor: pointer;
     transition: all .3s,padding 0s;
+  }
+  .Marge{
+    margin-top: 100px;
+    margin-left: 230px;
   }
   
   .trigger:hover {
@@ -200,9 +206,6 @@
     box-shadow: 0 1px 4px rgba(0,21,41,.08);
   }
   
-  nz-content {
-    margin: 24px;
-  }
   
   .inner-content {
     padding: 24px;

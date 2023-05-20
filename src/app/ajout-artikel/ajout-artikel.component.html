@@ -1,0 +1,170 @@
+<app-sid-bar></app-sid-bar>
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout Actulatite</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Ajout Actulatite" (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label >Titre</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="titre"nzWidth="25%" id="titre" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['titre'].dirty || registerForm.controls['titre'].touched) " >
+        <ng-container *ngIf="registerForm.controls['titre'].errors?.['required'] ; then TemplateUsernameRequired;"></ng-container>
+        <ng-template #TemplateUsernameRequired>
+  
+          Titre is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Contenu    :</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+         <textarea formControlName="contenu"  nz-input rows="4"></textarea>
+
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['contenu'].dirty || registerForm.controls['contenu'].touched) " >
+        <ng-container *ngIf="registerForm.controls['contenu'].errors?.['required'] ; then TemplateLastnameRequired;"></ng-container>
+        <ng-template #TemplateLastnameRequired>
+  
+          Contenu is required
+        </ng-template>
+  
+  
+      </div>
+  
+    </nz-form-item>
+ 
+    <nz-form-item>
+      <nz-form-label >Image</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+         <input class=" btn btn-fill btn-danger" accept="image/*" formControlName="image" (change)="onFilechange($event)" type="file"  /> 
+ 
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['image'].dirty || registerForm.controls['image'].touched) " >
+        <ng-container *ngIf="registerForm.controls['image'].errors?.['required'] ; then TemplateUsernameRequired;"></ng-container>
+        <ng-template #TemplateUsernameRequired>
+  
+          image is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+ 
+ 
+ 
+ 
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+  </nz-modal>
+  <nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Add updateUser" (nzOnCancel)="handleCancelupdate()" >
+    <ng-container *nzModalContent>
+    <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()">
+      <nz-form-item>
+        <nz-form-label >Titre</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="titre"nzWidth="25%" id="titre" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['titre'].dirty || registerForm.controls['titre'].touched) " >
+          <ng-container *ngIf="registerForm.controls['titre'].errors?.['required'] ; then TemplateUsernameRequired;"></ng-container>
+          <ng-template #TemplateUsernameRequired>
+    
+            Titre is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >Contenu    :</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+           <textarea formControlName="contenu"  nz-input rows="4"></textarea>
+  
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['contenu'].dirty || registerForm.controls['contenu'].touched) " >
+          <ng-container *ngIf="registerForm.controls['contenu'].errors?.['required'] ; then TemplateLastnameRequired;"></ng-container>
+          <ng-template #TemplateLastnameRequired>
+    
+            Contenu is required
+          </ng-template>
+    
+    
+        </div>
+    
+      </nz-form-item>
+   
+      <nz-form-item>
+        <nz-form-label >Image</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+           <input class=" btn btn-fill btn-danger" accept="image/*" formControlName="image" (change)="onFilechange($event)" type="file"  /> 
+   
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(225, 19, 19)"  *ngIf="(registerForm.controls['image'].dirty || registerForm.controls['image'].touched) " >
+          <ng-container *ngIf="registerForm.controls['image'].errors?.['required'] ; then TemplateUsernameRequired;"></ng-container>
+          <ng-template #TemplateUsernameRequired>
+    
+            image is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+   
+   
+   
+   
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+    
+  
+      </ng-container>
+    </nz-modal>
+<div class="Marge">
+  
+    <nz-table #editRowTable nzBordered nzTableLayout="fixed">
+        <thead>
+          <tr>
+            <th nzWidth="10%">Titre </th>
+            <th nzWidth="30%">Contenu</th>
+            <th nzWidth="40%">image</th>
+            
+
+            <th>Action</th>
+ 
+    
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of equipe">
+            <ng-container >
+              <td>{{ data.titre }}</td>
+              <td>{{ data.contenu }}</td>
+              <td> <img width="202" height="102"     alt="logo" src={{data.image}} /></td>
+               
+            
+         
+     
+    
+              <td><a  (click)="showModalupdate(data)" >Edit</a> <br><a (click)="showConfirm(data.idActualite)" >Delete</a></td>
+            </ng-container>
+     
+          </tr>
+        </tbody>
+      </nz-table>
+    
+   
+
+</div>

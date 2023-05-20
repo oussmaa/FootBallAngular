@@ -3,7 +3,10 @@
  .notification-ui a:after {
 	display: none;
 }
-
+.Marge{
+  margin-top: 200px;
+  margin-left: 230px;
+}
 .notification-ui_icon {
 	position: relative;
 }

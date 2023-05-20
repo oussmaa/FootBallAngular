@@ -1,38 +1,74 @@
-[nz-form] {
-  max-width: 600px;
-}
-
-.phone-select {
-  width: 70px;
-}
-
-.register-are {
-  margin-bottom: 8px;
-}
-.form {
-   
-  /* Uniquement centrer le formulaire sur la page */
-  margin: 0 auto;
-  margin-top: 50px;
-  width: 600px;
-  /* Encadré pour voir les limites du formulaire */
- padding: 1em;
-  border: 1px solid #CCC;
-  border-radius: 1em; 
- }
- h1{
-  font-size: 3em;
-  text-align: center;
-  color: rgb(7, 4, 4);
-  font-weight: 100;
-  text-transform: capitalize;
-  letter-spacing: 4px;
-  font-family: 'Roboto', sans-serif; }
-
-  body{
-    background-image: url('src\assets\images\imagenwa.png');
  
-    background-repeat: no-repeat;
-    height: 100%;
-    font-family: 'Numans', sans-serif;
-    }
+html,body{
+  background-image: url('src\assets\images\back.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
+  }
+
+.container{
+height: 100%;
+align-content: center;
+}
+.register-area{
+ margin: auto;
+}
+.card{
+height: 700px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+.card-header h3{
+color: white;
+}
+
+
+
+.input-group-prepend span{
+width: 50px;
+background-color: #c2460c;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #c9621d;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}

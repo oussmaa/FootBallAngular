@@ -1,0 +1,206 @@
+<app-sid-bar></app-sid-bar>
+<button nz-button nzType="primary" class="left" (click)="showModal()">Ajout SystemJeux</button>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Ajout SystemJeux" (nzOnCancel)="handleCancel()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label >nom</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched) " >
+          <ng-container *ngIf="registerForm.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+          <ng-template #TemplateUsernameInvalid>
+    
+            nom is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >Auteur</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="Auteur"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['Auteur'].dirty || registerForm.controls['Auteur'].touched) " >
+          <ng-container *ngIf="registerForm.controls['Auteur'].errors?.['required'] ; then TemplateadresseInvalid"></ng-container>
+          <ng-template #TemplateadresseInvalid>
+    
+              Auteur is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >description</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+          <input nz-input formControlName="description"  nzWidth="25%"id="firstName" />
+        </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['description'].dirty || registerForm.controls['description'].touched) " >
+          <ng-container *ngIf="registerForm.controls['description'].errors?.['required'] ; then TemplatenumeroTelInvalid"></ng-container>
+          <ng-template #TemplatenumeroTelInvalid>
+    
+              description is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label >dateCreation</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
+            <input
+            class="form-control"
+            type="text"
+            mwlFlatpickr
+            formControlName="dateCreation" 
+             [altInput]="true"
+            [convertModelValue]="true"
+             
+            [enableTime]="true"
+            dateFormat="Y-m-dTH:i"
+            altFormat="F j, Y H:i"
+            placeholder="Not set"
+          />
+         </nz-form-control> 
+        <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['dateCreation'].dirty || registerForm.controls['dateCreation'].touched) " >
+          <ng-container *ngIf="registerForm.controls['dateCreation'].errors?.['required'] ; then TemplateemailInvalid"></ng-container>
+          <ng-template #TemplateemailInvalid>
+    
+              dateCreation is required
+          </ng-template>
+   
+    
+        </div>
+      </nz-form-item>
+ 
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<nz-modal [(nzVisible)]="isVisibleupdate" nzTitle="Update SystemJeux" (nzOnCancel)="handleCancelupdate()" >
+  <ng-container *nzModalContent>
+  <form [formGroup]="registerForm" (ngSubmit)="submitFormupdate()">
+    <nz-form-item>
+      <nz-form-label >nom</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="nom"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['nom'].dirty || registerForm.controls['nom'].touched) " >
+        <ng-container *ngIf="registerForm.controls['nom'].errors?.['required'] ; then TemplateUsernameInvalid"></ng-container>
+        <ng-template #TemplateUsernameInvalid>
+  
+          nom is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >Auteur</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="Auteur"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['Auteur'].dirty || registerForm.controls['Auteur'].touched) " >
+        <ng-container *ngIf="registerForm.controls['Auteur'].errors?.['required'] ; then TemplateadresseInvalid"></ng-container>
+        <ng-template #TemplateadresseInvalid>
+  
+            Auteur is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >description</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+        <input nz-input formControlName="description"  nzWidth="25%"id="firstName" />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['description'].dirty || registerForm.controls['description'].touched) " >
+        <ng-container *ngIf="registerForm.controls['description'].errors?.['required'] ; then TemplatenumeroTelInvalid"></ng-container>
+        <ng-template #TemplatenumeroTelInvalid>
+  
+            description is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label >dateCreation</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" >
+         <input
+        class="form-control"
+        type="text"
+        mwlFlatpickr
+        formControlName="dateCreation" 
+         [altInput]="true"
+        [convertModelValue]="true"
+         
+        [enableTime]="true"
+        dateFormat="Y-m-dTH:i"
+        altFormat="F j, Y H:i"
+        placeholder="Not set"
+      />
+      </nz-form-control> 
+      <div style="display: block; font-size: 15px; color:rgb(236, 23, 23)"  *ngIf="(registerForm.controls['dateCreation'].dirty || registerForm.controls['dateCreation'].touched) " >
+        <ng-container *ngIf="registerForm.controls['dateCreation'].errors?.['required'] ; then TemplateemailInvalid"></ng-container>
+        <ng-template #TemplateemailInvalid>
+  
+            dateCreation is required
+        </ng-template>
+ 
+  
+      </div>
+    </nz-form-item>
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button class=" btn btn-fill btn-danger" type="submit" [disabled]="this.registerForm.invalid"  >Save</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  
+
+    </ng-container>
+</nz-modal> 
+<div class="Marge">
+<nz-table #editRowTable nzBordered nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th nzWidth="15%">nom</th>
+        <th nzWidth="15%">Auteur</th>
+        <th nzWidth="10%">description</th>
+        <th nzWidth="30%">dateCreation</th>
+
+        <th>Action</th>
+
+ 
+ 
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of satde">
+        <ng-container >
+          <td>{{ data.nom }}</td>
+          <td>{{ data.auteur }}</td>
+          <td>{{ data.description }}</td>
+          <td>{{ data.dateCreation }}</td>
+
+
+          <td><a  (click)="showModalupdate(data)" >Edit</a> <br><a (click)="showConfirm(data.idSystemeJeux)" >Delete</a></td>
+        </ng-container>
+ 
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>
